@@ -9,7 +9,7 @@ class api:
 
     def opvragen(self):
         antwoord = requests.get("https://spyapi.admkrm.repl.co/boodschappen")
-        return antwoord
+        return antwoord.text
     
     def posten(self,titel,boodschap,zender,ontvanger,groep):
         randomgetal = random.randint(0,5000)
@@ -65,11 +65,36 @@ class api:
             
 API = api()
 
+print("wat wilt u doen? \n 1. alle berichten inlezen. \n 2. lees geincrepteerde boodschap in. \n 3. alle berichten van een groep inlezen \n 4. een boodschap maken \n 5. een boodschap aanpassen \n 6. een boodschap verwijderen")
+keuze=int(input())
+if keuze == 1:
+    print(API.opvragen())
+if keuze == 2:
+    id = int(input("geef een id op"))
+    print(API.boodschap(id))
+if keuze == 3:
+    groep=input("geef de groepsnaam op")
+    API.groep(groep)
+if keuze == 4:
+    titel = input("geef een titel op")
+    boodschap = input("geef een boodschap op")
+    zender = input("geef de zender op")
+    ontvanger = input("geef de ontvanger op")
+    groep = input("geef een groep op")
+    API.posten(titel,boodschap,zender,ontvanger,groep) 
+if keuze == 5:
+    id = int(input("geef een id op"))
+    boodschap = input("geef de nieuwe boodschap op")
+    API.boodschapaanpassen(id,boodschap)
+if keuze == 6:
+    id = int(input("geef een id op"))
+    API.verwijderen(id)
+
 #print(API.opvragen().text)
 #API.posten("kasei", "de zon staat op 90 graden","wandelaar","weerspecialist","weerraportering")
 #print(API.boodschap(2126))
 #print(API.groep("raketlancering"))
 #print(API.boodschapaanpassen(2126,"de aarde staat op 4 graden"))
-print(API.boodschap(2126))
+#print(API.boodschap(2126))
 #codeboodschap = API.incodeeerboodschap(20,"hallo dit is een test")
 #API.decodeboodschap(20,codeboodschap)
