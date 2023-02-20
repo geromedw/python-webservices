@@ -1,0 +1,171 @@
+header{
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: black;
+    display: flex;
+    width: 100vw;
+    height: 10vh;
+}
+
+nav{
+    margin-left: auto;
+}
+
+nav ul li{
+    font-size: 2vh;
+    margin-top: 2.5vh;
+    display: inline-block;
+    margin: 2rem;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+main{
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96vw;
+}
+
+h2{
+    padding: 2rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.home{
+    height: 80vh;
+    width: 90vw;
+    background-color: whitesmoke;
+    margin-bottom: 2vh;
+}
+
+.home img{
+    display: block;
+    margin: auto;
+    width: 80vw;
+    height: 80vh;
+}
+
+
+
+.wdw{
+    height: 100vh;
+    background-color: #395723;
+    border-radius: 1rem;
+    margin-bottom: 2vh;
+}
+
+.info{
+    width: 30vw;
+    box-sizing: border-box;
+    float: left;
+    border: 0.1rem solid black;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.info .symbol{
+    display: block;
+    margin: auto;
+    padding-bottom: 1vh;
+    width: 5vw;
+    height: 10vh;
+}
+
+.info p{
+    font-size: 2vh;
+    text-align: left;
+    margin-left: 1vw;
+}
+
+h3{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.carousel{
+    position: relative;
+    height: 40vh;
+}
+
+.slide{
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.slide > img{
+    display: block;
+    object-fit: cover;
+    margin-left: 0.5vw;
+    width: 29vw;
+
+}
+
+.slide[data-active]{
+    opacity: 1;
+}
+
+.carousel-button{
+    position: absolute;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 4vh;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    background-color: rgb(0, 0, 0,.1);
+}
+
+.carousel-button.prev{
+
+    left: 1rem;
+}
+
+.carousel-button.next{
+    right: 1rem;
+}
+
+
+
+.over-ons{
+    height: 50vh;
+    background-color: #395723;
+    margin-bottom: 2vh;
+    border-radius: 1rem;
+}
+
+footer{
+    box-sizing: border-box;
+    height: 30vh;
+    background-color: black;
+    color: white;
+    font-size: 3vh;
+}
+
+.contact{
+    margin-top: 8vh;
+    margin-left: 1vw;
+    width: 48vw;
+    box-sizing: border-box;
+    float: left;
+}
+
+.contact > .name{
+    text-align: center;
+}
+
+
+
