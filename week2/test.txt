@@ -1,0 +1,67 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import Optional
+import sqlite3
+from sqlalchemy.orm import Session
+
+from . import models, schemas
+
+app = FastAPI()
+
+""" conn = sqlite3.connect("C:\\Users\\gerom\\python\\python-webservices\\week2\\gegevens.db")
+print("Opened database successfully")
+
+cursor = conn.execute("select * from test") """
+
+""" conn.execute('''create table cars
+             (
+                id INTEGER primary key AUTOINCREMENT,
+                merk TEXT,
+                type TEXT,
+                cijfer INTEGER     
+             )''') """
+
+#conn.execute("INSERT INTO test (id,naam) VALUES (1,'Gerome')")
+
+#conn.commit()
+
+""" cursor = conn.execute("SELECT * from test")
+for row in cursor:
+    print(row) """
+
+class Item(BaseModel): #serializer
+    id:int
+    name:str
+    description:str
+    price:int
+
+""" class cars(BaseModel):
+    merk:str
+    type:str
+    cijfer:int """
+
+@app.get("/")
+async def root() -> dict:
+    return {"boodschap" : "welkom op mijn api"}
+
+@app.get("/items/{item_id}")
+async def read_item(item_id):
+    return {"item_id": item_id}
+
+@app.get('/greet')
+def greet_optional_name(name:Optional[str]="user"):
+    return {"message":f"hello {name}"}
+
+@app.put('/item/{item_id}')
+def update_item(item_id:int,item:Item):
+    return {'name':item.name,
+            'discription': item.description,
+            'price': item.price}
+
+""" @app.post('/cars')
+async def post_cars(item:cars):
+    return conn.execute(f"INSERT INTO cars (merk,type,cijfer) VALUES ('{item.merk}','{item.type}',{item.cijfer})  ") """
+
+@app.post("/cars2", response_model=schemas.carBase)
+async def create_car(db: Session, car: schemas.carBase):
+    return "create a car"
