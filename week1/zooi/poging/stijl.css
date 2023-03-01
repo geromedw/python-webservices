@@ -1,0 +1,166 @@
+/* drie basisstijlregels om je te helpen */
+:root {font-size: 100%;  /* zet je dit op 62.5%, dan is elke rem 10px waard, anders 16px */ }
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+
+/* hier komt jouw css */
+
+
+body{
+    color: rgb(0, 0, 0);
+    min-height: 100vh;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+div.naam{
+    font-size: 5vh;
+}
+
+.navbar{
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+nav{
+    height: 8rem;
+    background-color: rgb(90, 173, 101);
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    z-index: 999;
+}
+
+nav ul{
+    float: right;
+}
+
+nav ul li{
+    display: inline-block;
+    font-size: 2vh;
+}
+
+nav li:not(:last-child){
+  margin-right: 3rem;
+}
+
+nav .fa {
+    display: none;
+}
+
+
+main{
+    background-color: whitesmoke;
+    padding-top: 8rem;
+    min-height:calc(120vh - 128px -128px) ;
+}
+
+.topimage{
+  background-image: url(topimage.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20rem;
+}
+
+p{
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+
+h2{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+main .info{
+    border:solid black;
+    width: 80vw;
+    margin-top: 2rem;
+    margin-left: 10vw;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+main ul{
+    display: grid;
+    margin-left: 20vw;
+    margin-bottom: 2rem;
+    grid-template-columns: 1fr 1fr;
+    width: 60vw;
+    gap: 0.2rem;
+}
+
+
+main ul li{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+main ul li h2{
+  font-size: 2rem;
+    margin-top: 1rem;
+}
+
+main ul li p{
+    margin-bottom: 2rem;
+}
+
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .prev{
+    left: 0;
+    border-radius: 3px 0 0 3px; 
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(77, 76, 76, 0.8);
+  }
+  
+
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+  main #contact{
+    margin-bottom: 2rem;
+    margin-left: 20vw;
+  }
+
+footer{
+    background-color: black;
+    height: 8rem;
+}
+
+
+
