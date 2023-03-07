@@ -17,3 +17,6 @@ def create_vraag(db:Session,vraag:schemas.Vraagcreate, survey_id:int):
     db.commit()
     db.refresh(db_vraag)
     return db_vraag
+
+def get_surveys(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Survey).offset(skip).limit(limit).all()
