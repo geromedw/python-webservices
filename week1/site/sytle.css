@@ -11,6 +11,7 @@ header{
 
 p{
     font-family: 'Merriweather Sans', sans-serif;
+    line-height: 4vh;
 }
 
 nav{
@@ -153,10 +154,18 @@ h3{
 
 
 .over-ons{
-    height: 50vh;
     background-color: #395723;
+    padding-bottom: 2vh;
     margin-bottom: 2vh;
     border-radius: 1vh;
+}
+
+.insta{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30vw;
+    border: 1rem solid beige;
 }
 
 footer{
@@ -175,7 +184,6 @@ footer{
 }
 
 footer>h3{
-    grid-column: 1/2;
     text-align: left;
 }
 
@@ -187,7 +195,11 @@ footer>h3{
 .contact{
     width: 35vw;
     grid-row: 2/3;
+    color: white;
+}
 
+a{
+    color: white;
 }
 
 
