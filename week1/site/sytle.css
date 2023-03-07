@@ -1,12 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@1,300&display=swap');
-header{
-    top: 0;
+
+.navbar{
+    z-index: 10;
     position: fixed;
-    z-index: 5;
+    top: 0;
+    width: 100vw;
     background-color: black;
     display: flex;
-    width: 100vw;
-    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 0vh 2vh 2vh;
+}
+
+.LOGO>img{
+    display: block;
+    width: 250px;
+    height: 100px;
+}
+
+.navbar_links ul{
+    display: flex;
+}
+
+.navbar_links{
+    list-style: none;
+}
+
+.navbar_links li a{
+    font-size: 3vh;
+    padding-left: 2vw;
+    padding-right: 4vw;
+}
+
+.toggle_button{
+    position: absolute;
+    margin-top: 5vh;
+    right: 10vw;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+.toggle_button .bar{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
 }
 
 p{
@@ -14,28 +55,12 @@ p{
     line-height: 4vh;
 }
 
-nav{
-    margin-left: auto;
-}
-
-nav ul li{
-    font-size: 2vh;
-    margin-top: 2.5vh;
-    display: inline-block;
-    margin: 2vw;
-}
-
-nav ul li a{
-    color: white;
-    text-decoration: none;
-}
-
 body{
     background-color: whitesmoke;
 }
 
 main{
-    margin-top: 10vh;
+    padding-top: 137px;
     margin-left: auto;
     margin-right: auto;
     width: 96vw;
@@ -59,6 +84,12 @@ h2{
     margin: auto;
     width: 80vw;
     height: 80vh;
+    animation: fade 2s;
+}
+
+@keyframes fade{
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 
@@ -88,8 +119,8 @@ h2{
     display: block;
     margin: auto;
     padding-bottom: 1vh;
-    width: 5vw;
-    height: 10vh;
+    width: 80px;
+    height: 100px;
 }
 
 .info p{
@@ -124,6 +155,8 @@ h3{
     object-fit: cover;
     width: 29vw;
     height: 40vh;
+    animation: fade 1s;
+
 }
 
 .slide[data-active]{
@@ -157,25 +190,31 @@ h3{
     background-color: #395723;
     padding-bottom: 2vh;
     margin-bottom: 2vh;
+    padding-top: 2vh;
     border-radius: 1vh;
 }
 
 .insta{
+    align-items: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30vw;
-    border: 1rem solid beige;
+    width: 600px;
+}
+
+.instagram-media{
+    position: relative;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer{
-    padding: 2vh;
-    padding-left: 15vw;
-    padding-right: 15vw;
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
-    box-sizing: border-box;
+    padding-top: 2vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    display: flex;
+    justify-content: space-between;
     background-color: black;
     color: white;
     font-weight: 500;
@@ -183,27 +222,21 @@ footer{
     padding-bottom: 2vh;
 }
 
-footer>h3{
-    text-align: left;
-}
-
 .gegevens{
-    width: 35vw;
-    grid-row: 2/3;
+    text-align: center;
 }
 
 .contact{
-    width: 35vw;
-    grid-row: 2/3;
-    color: white;
+    text-align: center;
 }
 
 a{
+    text-decoration: none;
     color: white;
 }
 
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:1000px) {
     .info{
         grid-column: 1/2;
         width: 90vw;
@@ -216,9 +249,65 @@ a{
         width: 10vw;
     }
 
-    footer>h3{
-        grid-column: 1/3;
+    .insta{
+        width: 350px;
+    }
+
+    .instagram-media{
+        width: 350px;
+    }
+
+    footer{
+        flex-direction: column;
+    }
+
+    .gegevens{
+        margin-bottom: 8vh;
+    }
+
+    .contact{
+        margin-bottom: 8vhq;
+    }
+
+    main{
+        padding-top: 10vh;
+    }
+
+    .info .symbol{
+        width: 100px;
+    }
+
+    .LOGO>img{
+        width: 200px;
+        height: 100px;
+    }
+
+    .toggle_button{
+        display: flex;
+    }
+
+    .navbar_links{
+        display: none;
+        width: 100vw;
+    }
+
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar_links ul{
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .navbar_links li{
         text-align: center;
+        padding-bottom: 1vh;
+    }
+
+    .navbar_links.active{
+        display: flex;
     }
 }
 
