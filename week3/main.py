@@ -51,3 +51,7 @@ async def read_by_id(request:Request, survey_id:int,db:Session=Depends(get_db)):
 async def get_surveys(request:Request, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     db_surveys=crud.get_surveys(db=db,skip=skip, limit=limit)
     return templates.TemplateResponse("surveys.html",{"request":request,"surveys":db_surveys})
+
+@app.post("/submitform")
+async def post_form(verzendantwoord:str=Form()):
+    return {"test":verzendantwoord}
