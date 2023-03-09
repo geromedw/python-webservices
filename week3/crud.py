@@ -12,6 +12,7 @@ def create_survey(db:Session, survey=schemas.Surveycreate):
     return db_survey
 
 def create_vraag(db:Session,vraag:schemas.Vraagcreate, survey_id:int):
+    print(vraag)
     db_vraag=models.Vraag(**vraag.dict(),survey_id=survey_id)
     db.add(db_vraag)
     db.commit()
@@ -31,8 +32,9 @@ def create_antwoord(db:Session,antwoord=str,vraag_id=int):
     db.refresh(db_antwoord)
     return db_antwoord
 
-def post_form(db:Session,antwoord=schemas.Antwoordcreate,vraag_id=int):
-    db_antwoord=models.Antwoord(**antwoord.dict(),vraag_id=vraag_id)
+def post_form(db:Session,antwoord:schemas.Antwoordcreate,vraag_id=int):
+    print(antwoord)
+    db_antwoord=models.Antwoord(antwoord=antwoord,vraag_id=vraag_id)
     db.add(db_antwoord)
     db.commit()
     db.refresh(db_antwoord)

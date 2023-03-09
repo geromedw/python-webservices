@@ -62,11 +62,6 @@ async def get_surveys(request:Request, skip: int = 0, limit: int = 100, db: Sess
     db_surveys=crud.get_surveys(db=db,skip=skip, limit=limit)
     return templates.TemplateResponse("surveys.html",{"request":request,"surveys":db_surveys})
 
-@app.post("/submitform/{vraag_id}")
+@app.post("/submitform/{vraag_id}",response_class=HTMLResponse)
 async def post_form(vraag_id:int,antwoord:str=Form(), db:Session=Depends(get_db)):
     db_antwoord=crud.post_form(db=db,antwoord=antwoord,vraag_id=vraag_id)
-    return db_antwoord
-
-@app.post("/surveys/{vraag_id}/antwoord",response_model=schemas.Antwoord)
-def create_antwoord(vraag_id:int,antwoord:str=Form(),db:Session=Depends(get_db)):
-    return crud.create_antwoord(db=db,antwoord=antwoord,vraag_id=vraag_id)

@@ -2,15 +2,32 @@
 <head>
     <title>Item Details</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+          document.getElementById("myForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Cancel the default action
+            submitForm();
+          });
+        });
+      </script>
 </head>
 <body>
     <h1>{{ surveytitel }}</h1>
     {% for vraag in vragen %}
-    <form action="/submitform/{{vraag.id}}" method="post">
+    <form id=Myform action="/submitform/{{vraag.id}}" method="post">
     <p>{{vraag.vraag}}</p> <br>
     <input type="text" name="antwoord">
     <input type="submit">
     </form>
     {% endfor %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+          document.getElementById("myForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Cancel the default action
+            submitForm();
+          });
+        });
+      </script>
 </body>
 </html>
