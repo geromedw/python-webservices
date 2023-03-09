@@ -6,11 +6,11 @@
 <body>
     <h1>{{ surveytitel }}</h1>
     {% for vraag in vragen %}
-    <form action="/submitform" method="post">
+    <form action="/submitform/{{vraag.id}}" method="post">
     <p>{{vraag.vraag}}</p> <br>
-    <input type="text" name="verzendantwoord">
+    <input type="text" name="antwoord">
     <input type="submit">
+    </form>
     {% endfor %}
-</form>
 </body>
 </html>

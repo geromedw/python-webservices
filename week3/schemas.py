@@ -1,17 +1,30 @@
 from pydantic import BaseModel
 
-class Vraagbase(BaseModel):
-    vraag : str
+class Antwoordbase(BaseModel):
+    antwoord:str
 
-class Vraag(Vraagbase):
+class Antwoordcreate(Antwoordbase):
+    pass
+
+class Antwoord(Antwoordbase):
     id:int
-    vraag:str
-    survey_id:int
+    vraag_id:int
     class Config:
         orm_mode = True
 
+
+class Vraagbase(BaseModel):
+    vraag : str
+
 class Vraagcreate(Vraagbase):
     pass
+
+class Vraag(Vraagbase):
+    id:int
+    survey_id:int
+    antwoorden: list[Antwoord] = []
+    class Config:
+        orm_mode = True
 
 
 class Surveybase(BaseModel):
@@ -19,13 +32,13 @@ class Surveybase(BaseModel):
     discription : str
 
 class Surveycreate(Surveybase):
-    title= str
+    pass
 
 class Survey(Surveybase):
     id:int
-    title : str
-    discription : str
     vragen: list[Vraag] = []
 
     class Config:
         orm_mode = True
+
+

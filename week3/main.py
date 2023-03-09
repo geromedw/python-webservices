@@ -29,29 +29,44 @@ def get_db():
         db.close()
 
 
-""" @app.post("/surveys",response_model=schemas.Survey)
+@app.post("/surveys",response_model=schemas.Survey)
 def create_survey(survey: schemas.Surveycreate,db:Session =Depends(get_db)):
-    return crud.create_survey(db=db,survey=survey) """
+    return crud.create_survey(db=db,survey=survey)
 
 @app.post("/surveys/{survey_id}/vragen",response_model=schemas.Vraag)
 def create_item_survey(survey_id:int,vraag:schemas.Vraagcreate,db:Session = Depends(get_db)):
     return crud.create_vraag(db=db,vraag=vraag,survey_id=survey_id)
 
+@app.post("/surveys/{vraag_id}/antwoord",response_model=schemas.Antwoord)
+def create_antwoord(vraag_id:int,antwoord:schemas.Antwoordcreate,db:Session=Depends(get_db)):
+    return crud.create_antwoord(db=db,antwoord=antwoord,vraag_id=vraag_id)
+
 """ @app.get("/surveys/{survey_id}",response_model=schemas.Survey)
 def read_survey_by_id(survey_id:int, db:Session=Depends(get_db)):
     db_survey=crud.get_survey_by_id(db=db,survey_id=survey_id)
-    return db_survey
- """
+    return db_survey """
+
 @app.get("/surveys/{survey_id}", response_class=HTMLResponse)
 async def read_by_id(request:Request, survey_id:int,db:Session=Depends(get_db)):
     db_survey=crud.get_survey_by_id(db=db,survey_id=survey_id)
     return templates.TemplateResponse("item.html", {"request":request,"surveytitel":db_survey.title,"vragen": db_survey.vragen})
+
+@app.get("/vragen/{vraag_id}",response_model=schemas.Vraag)
+def read_vraag_by_id(vraag_id:int, db:Session=Depends(get_db)):
+    db_survey=crud.get_vraag_by_id(db,vraag_id)
+    return db_survey
+
 
 @app.get("/surveys",response_class=HTMLResponse)
 async def get_surveys(request:Request, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     db_surveys=crud.get_surveys(db=db,skip=skip, limit=limit)
     return templates.TemplateResponse("surveys.html",{"request":request,"surveys":db_surveys})
 
-@app.post("/submitform")
-async def post_form(verzendantwoord:str=Form()):
-    return {"test":verzendantwoord}
+@app.post("/submitform/{vraag_id}")
+async def post_form(vraag_id:int,antwoord:str=Form(), db:Session=Depends(get_db)):
+    db_antwoord=crud.post_form(db=db,antwoord=antwoord,vraag_id=vraag_id)
+    return db_antwoord
+
+@app.post("/surveys/{vraag_id}/antwoord",response_model=schemas.Antwoord)
+def create_antwoord(vraag_id:int,antwoord:str=Form(),db:Session=Depends(get_db)):
+    return crud.create_antwoord(db=db,antwoord=antwoord,vraag_id=vraag_id)

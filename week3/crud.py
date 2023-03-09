@@ -18,5 +18,22 @@ def create_vraag(db:Session,vraag:schemas.Vraagcreate, survey_id:int):
     db.refresh(db_vraag)
     return db_vraag
 
+def get_vraag_by_id(db:Session,vraag_id:int):
+    return db.query(models.Vraag).filter(models.Vraag.id == vraag_id).first()
+
 def get_surveys(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Survey).offset(skip).limit(limit).all()
+
+def create_antwoord(db:Session,antwoord=str,vraag_id=int):
+    db_antwoord=models.Antwoord(**antwoord.dict(),vraag_id=vraag_id)
+    db.add(db_antwoord)
+    db.commit()
+    db.refresh(db_antwoord)
+    return db_antwoord
+
+def post_form(db:Session,antwoord=schemas.Antwoordcreate,vraag_id=int):
+    db_antwoord=models.Antwoord(**antwoord.dict(),vraag_id=vraag_id)
+    db.add(db_antwoord)
+    db.commit()
+    db.refresh(db_antwoord)
+    return db_antwoord   
